@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "name": "Turnip v26.2.0-R6",
+  "description": "A7xx main",
+  "author": "stevenmx",
+  "packageVersion": "1",
+  "vendor": "Mesa",
+  "driverVersion": "Vulkan 1.4.353",
+  "minApi": 28,
+  "libraryName": "libvulkan_freedreno.so"
+}
