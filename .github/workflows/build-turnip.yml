@@ -1,0 +1,42 @@
+name: Build Turnip (Adreno 735)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main, 'ci/**' ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-turnip:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup dependencies
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y git python3 python3-pip ninja-build pkg-config build-essential meson libexpat1-dev unzip curl
+
+      - name: Download Android NDK r25 (recommended)
+        run: |
+          NDK_URL="https://dl.google.com/android/repository/android-ndk-r25b-linux.zip"
+          curl -fsSL "$NDK_URL" -o ndk.zip
+          unzip -q ndk.zip
+          echo "NDK_HOME=$PWD/android-ndk-r25b" >> $GITHUB_ENV
+
+      - name: Run build script
+        env:
+          NDK_HOME: ${{ env.NDK_HOME }}
+          TARGET_ARCH: arm64
+          MESA_TAG: v26.2.0-R6
+        run: |
+          chmod +x ./scripts/build_turnip.sh
+          ./scripts/build_turnip.sh
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: turnip-artifacts
+          path: build-output/*.so
