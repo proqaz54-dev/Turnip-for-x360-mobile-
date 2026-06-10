@@ -10,10 +10,32 @@ INSTALL_DIR="$ROOT/build-output"
 mkdir -p "$BUILD_DIR" "$INSTALL_DIR"
 
 echo "Cloning mesa (may take a while)..."
-git clone --depth 1 --branch "$MESA_TAG" https://gitlab.freedesktop.org/mesa/mesa.git mesa-src || true
+git clone https://gitlab.freedesktop.org/mesa/mesa.git mesa-src || true
 cd mesa-src
-git fetch --all --tags
-git checkout "$MESA_TAG" || true
+git fetch --all --tags || true
+
+# Try to checkout requested tag/branch, otherwise pick a sensible fallback
+if git rev-parse --verify --quiet "$MESA_TAG" >/dev/null 2>&1 || git ls-remote --exit-code --tags origin "$MESA_TAG" >/dev/null 2>&1; then
+  echo "Checking out requested tag/branch: $MESA_TAG"
+  git checkout "$MESA_TAG" || true
+else
+  echo "Requested tag '$MESA_TAG' not found. Searching for closest suitable tag..."
+  # Prefer explicit Turnip tags, then v26.* tags, then latest tag, otherwise fall back to main
+  TAG=$(git tag -l 'turnip*' | sort -V | tail -n1 || true)
+  if [ -z "$TAG" ]; then
+    TAG=$(git tag -l 'v26.*' | sort -V | tail -n1 || true)
+  fi
+  if [ -z "$TAG" ]; then
+    TAG=$(git tag -l | sort -V | tail -n1 || true)
+  fi
+  if [ -n "$TAG" ]; then
+    echo "Checking out discovered tag: $TAG"
+    git checkout "$TAG" || true
+  else
+    echo "No tags found; falling back to 'main' branch"
+    git checkout main || git checkout master || true
+  fi
+fi
 
 echo "Writing meson cross file..."
 cat > $ROOT/scripts/meson_android_aarch64_cross.txt <<EOF
