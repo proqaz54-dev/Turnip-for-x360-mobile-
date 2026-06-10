@@ -1,0 +1,913 @@
+             ANDROID STATIC ANALYSIS REPORT
+
+
+
+
+                  X360 Mobile (0.5 public)
+
+
+
+File Name:           X360_0.5_public.apk
+Package Name:           emu.x360.mobile
+
+Scan Date:              May 30, 2026, 8:33 p.m.
+
+App Security Score:     60/100 (LOW RISK)
+
+Grade:
+                              A
+
+
+   FINDINGS SEVERITY
+     HIGH                        MEDIUM                          INFO    SECURE    HOTSPOT
+
+
+
+
+    0                            6                                3        1          1
+
+       FILE INFORMATION
+File Name: X360_0.5_public.apk
+Size: 14.32MB
+MD5: 3f36e2e501966aceafbde96896d0187d
+SHA1: 64b61d4c5d4bc1c996984458f5e486214ebcc1b2
+SHA256: 80fafc94e0be599fbc9065a694f2ce0c3bc92d140962870fdac26987f9838731
+
+
+   APP INFORMATION
+App Name: X360 Mobile
+Package Name: emu.x360.mobile
+Main Activity: emu.x360.mobile.X360MobileDashboardActivity
+Target SDK: 36
+Min SDK: 30
+Max SDK:
+Android Version Name: 0.5 public
+Android Version Code: 6
+
+
+       APP COMPONENTS
+Activities: 4
+Services: 0
+Receivers: 0
+Providers: 2
+Exported Activities: 1
+Exported Services: 0
+Exported Receivers: 0
+Exported Providers: 0
+
+
+      CERTIFICATE INFORMATION
+Binary is signed
+v1 signature: False
+v2 signature: True
+v3 signature: False
+v4 signature: False
+X.509 Subject: C=IT, O=X360Mobile, CN=Ashnar2602
+Signature Algorithm: rsassa_pkcs1v15
+Valid From: 2026-05-20 20:58:49+00:00
+Valid To: 2056-05-12 20:58:49+00:00
+Issuer: C=IT, O=X360Mobile, CN=Ashnar2602
+Serial Number: 0xca2455c8e4bd67f5
+Hash Algorithm: sha256
+md5: 906c6d11cffd3fe3e8ec7dfb237558c5
+sha1: 698db904ef59d4f9f20ee26a561de2c70ffd9d8f
+sha256: fa52f2df2c7002b55299e96583a1cc464cbfbe68b7788e018e220cb59fa34995
+sha512: a089425dfc0f9ea01ccb1f2de22a94b05e163ca8a25be242b6087d30b261b6b2d753a640511f2e7e2346ed15280d3ebe7be46a6226eb8392c83af975c78db270
+PublicKey Algorithm: rsa
+Bit Size: 2048
+Fingerprint: 9dba38993c896872b2e5d510ec4d094172b1ff05a48bf123eb2276e828902d14
+Found 1 unique certificates
+
+
+      APPLICATION PERMISSIONS
+  PERMISSION                                                 STATUS      INFO                          DESCRIPTION
+
+  android.permission.READ_EXTERNAL_STORAGE                   dangerous   read external storage         Allows an application to read from external storage.
+                                                                         contents
+
+  android.permission.WRITE_EXTERNAL_STORAGE                  dangerous   read/modify/delete external   Allows an application to write to external storage.
+                                                                         storage contents
+PERMISSION                                                    STATUS           INFO                             DESCRIPTION
+                                                                               Allows an application a          Allows an application a broad access to external storage in
+android.permission.MANAGE_EXTERNAL_STORAGE                    dangerous        broad access to external         scoped storage. Intended to be used by few apps that need to
+                                                                               storage in scoped storage        manage files on behalf of the users.
+
+android.permission.INTERNET                                   normal           full Internet access             Allows an application to create network sockets.
+
+emu.x360.mobile.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION      unknown          Unknown permission               Unknown permission from android reference
+
+
+
+   APKID ANALYSIS
+FILE                                                  DETAILS
+
+                                                           FINDINGS                                                 DETAILS
+3f36e2e501966aceafbde96896d0187d.apk
+                                                           Manipulator Found                                        Resources Confusion
+
+
+
+                                                           FINDINGS                   DETAILS
+                                                           yara_issue                 yara issue - dex file recognized by apkid but not yara module
+classes.dex                                                                           Build.FINGERPRINT check
+                                                           Anti-VM Code               Build.MANUFACTURER check
+                                                                                      Build.BOARD check
+
+                                                           Compiler                   unknown (please file detection issue!)
+
+
+
+
+   BROWSABLE ACTIVITIES
+  ACTIVITY                                            INTENT
+                                                      Schemes: file://, content://,
+                                                      Hosts: *,
+  emu.x360.mobile.X360MobileGameLaunchActivity        Mime Types: */*,
+                                                      Path Patterns: .*\\.iso, .*\\..*\\.iso, .*\\..*\\..*\\.iso, .*\\.xex, .*\\..*\\.xex, .*\\..*\\..*\\.xex, .*\\.zar, .*\\..*\\.zar, .*\\..*\\..*\\.zar,
+                                                      .*\\.xbla, .*\\..*\\.xbla, .*\\..*\\..*\\.xbla,
+
+
+
+     NETWORK SECURITY
+  NO                       SCOPE                                     SEVERITY                                                     DESCRIPTION
+
+
+      CERTIFICATE ANALYSIS
+HIGH: 0 | WARNING: 0 | INFO: 1
+  TITLE                                      SEVERITY                                DESCRIPTION
+  Signed Application                         info                                    Application is signed with a code signing certificate
+
+
+
+     MANIFEST ANALYSIS
+HIGH: 0 | WARNING: 1 | INFO: 0 | SUPPRESSED: 0
+  NO       ISSUE                                                                       SEVERITY             DESCRIPTION
+
+  1        Activity (emu.x360.mobile.X360MobileGameLaunchActivity) is not              warning              An Activity is found to be shared with other apps on the device therefore leaving it
+           Protected. [android:exported=true]                                                               accessible to any other application on the device.
+      CODE ANALYSIS
+HIGH: 0 | WARNING: 4 | INFO: 3 | SECURE: 0 | SUPPRESSED: 0
+  NO      ISSUE                                        SEVERITY   STANDARDS                                                   FILES
+                                                                                                                              B/AbstractActivityC0260m.java
+                                                                                                                              B/I.java
+                                                                                                                              B/J.java
+                                                                                                                              I/D0.java
+                                                                                                                              M1/e.java
+                                                                                                                              R1/AbstractC0797c9.java
+                                                                                                                              R1/AbstractC1004x.java
+                                                                                                                              R1/AbstractC1007x2.java
+                                                                                                                              R1/C0803d4.java
+                                                                                                                              R1/C0836g4.java
+                                                                                                                              R1/C0862i8.java
+                                                                                                                              R1/D5.java
+                                                                                                                              R1/E3.java
+                                                                                                                              R1/E8.java
+                                                                                                                              R1/H8.java
+                                                                                                                              R1/I9.java
+                                                                                                                              R1/L7.java
+                                                                                                                              R1/L8.java
+                                                                                                                              R1/N7.java
+                                                                                                                              R1/RunnableC0983u8.java
+                                                                                                                              R1/U8.java
+          The App logs information. Sensitive                     CWE: CWE-532: Insertion of Sensitive Information into Log   R1/X8.java
+  1       information should never be logged.          info       File                                                        T0/F.java
+                                                                  OWASP MASVS: MSTG-STORAGE-3                                 b0/A.java
+                                                                                                                              b1/AbstractC0320a.java
+                                                                                                                              d1/AbstractC0368j.java
+                                                                                                                              d1/v.java
+                                                                                                                              emu/x360/mobile/X360MobileActivity.java
+                                                                                                                              emu/x360/mobile/X360MobileDashboardActivit
+                                                                                                                              y.java
+                                                                                                                              emu/x360/mobile/X360MobileFilePickerDialog.j
+                                                                                                                              ava
+                                                                                                                              emu/x360/mobile/X360MobileGameActivity.jav
+                                                                                                                              a
+                                                                                                                              h0/C0431a.java
+                                                                                                                              h0/v.java
+                                                                                                                              h1/i.java
+                                                                                                                          h1/i.java
+                                                                                                                          h1/l.java
+NO   ISSUE                                          SEVERITY   STANDARDS                                                  FILES
+                                                                                                                          org/libsdl/app/HIDDeviceBLESteamController.ja
+                                                                                                                          va
+                                                                                                                          org/libsdl/app/HIDDeviceManager.java
+                                                                                                                          org/libsdl/app/HIDDeviceUSB.java
+                                                                                                                          org/libsdl/app/SDLActivity.java
+                                                                                                                          org/libsdl/app/SDLAudioManager.java
+                                                                                                                          t1/AbstractC1212x.java
+
+                                                                                                                          J1/a.java
+     The App uses an insecure Random Number                    CWE: CWE-330: Use of Insufficiently Random Values          J1/b.java
+2    Generator.                                     warning    OWASP Top 10: M5: Insufficient Cryptography                J1/c.java
+                                                               OWASP MASVS: MSTG-CRYPTO-6                                 k1/a.java
+                                                                                                                          w/a.java
+
+     This app listens to Clipboard changes.
+3    Some malware also listen to Clipboard          info       OWASP MASVS: MSTG-PLATFORM-4                               org/libsdl/app/SDLClipboardHandler.java
+     changes.
+
+     This App copies data to clipboard. Sensitive                                                                         T0/C1150h.java
+4    data should not be copied to clipboard as      info       OWASP MASVS: MSTG-STORAGE-10                               org/libsdl/app/SDLClipboardHandler.java
+     other applications can access it.
+
+     Files may contain hardcoded sensitive                     CWE: CWE-312: Cleartext Storage of Sensitive Information   I/C0135h0.java
+5    information like usernames, passwords,         warning    OWASP Top 10: M9: Reverse Engineering                      R1/C0878k3.java
+     keys etc.                                                 OWASP MASVS: MSTG-STORAGE-14
+
+     App can read/write to External Storage.                   CWE: CWE-276: Incorrect Default Permissions                R1/C0862i8.java
+6    Any App can read data written to External      warning    OWASP Top 10: M2: Insecure Data Storage                    R1/I9.java
+     Storage.                                                  OWASP MASVS: MSTG-STORAGE-2                                R1/U1.java
+
+                                                               CWE: CWE-327: Use of a Broken or Risky Cryptographic
+7    SHA-1 is a weak hash known to have hash        warning    Algorithm                                                  R1/I9.java
+     collisions.                                               OWASP Top 10: M5: Insufficient Cryptography
+                                                               OWASP MASVS: MSTG-CRYPTO-4
+
+
+
+   SHARED LIBRARY BINARY ANALYSIS
+                                                                      STACK                                                                                SYMBOLS
+NO   SHARED OBJECT                      NX            PIE                             RELRO          RPATH       RUNPATH         FORTIFY
+                                                                      CANARY                                                                               STRIPPED
+                                        True          Dynamic         True            Full RELRO     None        None            False                     True
+                                        info          Shared          info            info           info        info            warning                   info
+                                        The binary    Object (DSO)    This binary     This shared    The         The binary      The binary does not       Symbols are
+                                        has NX bit    info            has a stack     object has     binary      does not have   have any fortified        stripped.
+                                        set. This     The shared      canary          full RELRO     does not    RUNPATH set.    functions. Fortified
+                                        marks a       object is       value added     enabled.       have run-                   functions provides
+                                        memory        build with -    to the stack    RELRO          time                        buffer overflow checks
+                                        page non-     fPIC flag       so that it      ensures        search                      against glibc's
+                                        executable    which           will be         that the       path or                     commons insecure
+                                        making        enables         overwritten     GOT            RPATH                       functions like strcpy,
+                                        attacker      Position        by a stack      cannot be      set.                        gets etc. Use the
+     arm64-                             injected      independent     buffer that     overwritten                                compiler option -
+1    v8a/libandroidx.graphics.path.so   shellcode     code. This      overflows       in                                         D_FORTIFY_SOURCE=2
+                                        non-          makes Return    the return      vulnerable                                 to fortify functions.
+                                        executable.   Oriented        address.        ELF                                        This check is not
+                                                      Programming     This allows     binaries. In                               applicable for
+                                                      (ROP) attacks   detection of    Full RELRO,                                Dart/Flutter libraries.
+                                                      much more       overflows       the entire
+                                                      difficult to    by verifying    GOT (.got
+                                                      execute         the integrity   and .got.plt
+                                                      reliably.       of the          both) is
+                                                                      canary          marked as
+                                                                      before          read-only.
+                                                                      function
+                                                                      return.
+                                                               STACK                                                                            SYMBOLS
+NO   SHARED OBJECT               NX            PIE                             RELRO          RPATH       RUNPATH         FORTIFY
+                                                               CANARY                                                                           STRIPPED
+                                 True          Dynamic         True            Full RELRO     None        None            True                  True
+                                 info          Shared          info            info           info        info            info                  info
+                                 The binary    Object (DSO)    This binary     This shared    The         The binary      The binary has the    Symbols are
+                                 has NX bit    info            has a stack     object has     binary      does not have   following fortified   stripped.
+                                 set. This     The shared      canary          full RELRO     does not    RUNPATH set.    functions:
+                                 marks a       object is       value added     enabled.       have run-                   ['__vsnprintf_chk',
+                                 memory        build with -    to the stack    RELRO          time                        '__read_chk']
+                                 page non-     fPIC flag       so that it      ensures        search
+                                 executable    which           will be         that the       path or
+                                 making        enables         overwritten     GOT            RPATH
+                                 attacker      Position        by a stack      cannot be      set.
+                                 injected      independent     buffer that     overwritten
+2    arm64-v8a/libhook_impl.so   shellcode     code. This      overflows       in
+                                 non-          makes Return    the return      vulnerable
+                                 executable.   Oriented        address.        ELF
+                                               Programming     This allows     binaries. In
+                                               (ROP) attacks   detection of    Full RELRO,
+                                               much more       overflows       the entire
+                                               difficult to    by verifying    GOT (.got
+                                               execute         the integrity   and .got.plt
+                                               reliably.       of the          both) is
+                                                               canary          marked as
+                                                               before          read-only.
+                                                               function
+                                                               return.
+                                                          STACK                                                                            SYMBOLS
+NO   SHARED OBJECT          NX            PIE                             RELRO          RPATH       RUNPATH         FORTIFY
+                                                          CANARY                                                                           STRIPPED
+                            True          Dynamic         True            Full RELRO     None        None            True                  True
+                            info          Shared          info            info           info        info            info                  info
+                            The binary    Object (DSO)    This binary     This shared    The         The binary      The binary has the    Symbols are
+                            has NX bit    info            has a stack     object has     binary      does not have   following fortified   stripped.
+                            set. This     The shared      canary          full RELRO     does not    RUNPATH set.    functions:
+                            marks a       object is       value added     enabled.       have run-                   ['__memcpy_chk',
+                            memory        build with -    to the stack    RELRO          time                        '__memset_chk',
+                            page non-     fPIC flag       so that it      ensures        search                      '__fwrite_chk',
+                            executable    which           will be         that the       path or                     '__fread_chk',
+                            making        enables         overwritten     GOT            RPATH                       '__vsnprintf_chk',
+                            attacker      Position        by a stack      cannot be      set.                        '__write_chk',
+                            injected      independent     buffer that     overwritten                                '__read_chk',
+                            shellcode     code. This      overflows       in                                         '__strlen_chk',
+3    arm64-v8a/libmain.so   non-          makes Return    the return      vulnerable                                 '__pread_chk',
+                            executable.   Oriented        address.        ELF                                        '__pwrite_chk',
+                                          Programming     This allows     binaries. In                               '__strlcpy_chk',
+                                          (ROP) attacks   detection of    Full RELRO,                                '__strncpy_chk',
+                                          much more       overflows       the entire                                 '__vsprintf_chk',
+                                          difficult to    by verifying    GOT (.got                                  '__memmove_chk',
+                                          execute         the integrity   and .got.plt                               '__FD_SET_chk',
+                                          reliably.       of the          both) is                                   '__FD_ISSET_chk',
+                                                          canary          marked as                                  '__recvfrom_chk',
+                                                          before          read-only.                                 '__sendto_chk',
+                                                          function                                                   '__strchr_chk',
+                                                          return.                                                    '__strrchr_chk',
+                                                                                                                     '__strcpy_chk',
+                                                                                                                     '__strcat_chk',
+                                                                                                                     '__strncat_chk']
+                                                               STACK                                                                                SYMBOLS
+NO   SHARED OBJECT               NX            PIE                             RELRO          RPATH       RUNPATH         FORTIFY
+                                                               CANARY                                                                               STRIPPED
+                                 True          Dynamic         False           Full RELRO     None        None            False                     True
+                                 info          Shared          high            info           info        info            warning                   info
+                                 The binary    Object (DSO)    This binary     This shared    The         The binary      The binary does not       Symbols are
+                                 has NX bit    info            does not        object has     binary      does not have   have any fortified        stripped.
+                                 set. This     The shared      have a stack    full RELRO     does not    RUNPATH set.    functions. Fortified
+                                 marks a       object is       canary          enabled.       have run-                   functions provides
+                                 memory        build with -    value added     RELRO          time                        buffer overflow checks
+                                 page non-     fPIC flag       to the stack.   ensures        search                      against glibc's
+                                 executable    which           Stack           that the       path or                     commons insecure
+                                 making        enables         canaries are    GOT            RPATH                       functions like strcpy,
+                                 attacker      Position        used to         cannot be      set.                        gets etc. Use the
+                                 injected      independent     detect and      overwritten                                compiler option -
+                                 shellcode     code. This      prevent         in                                         D_FORTIFY_SOURCE=2
+                                 non-          makes Return    exploits        vulnerable                                 to fortify functions.
+                                 executable.   Oriented        from            ELF                                        This check is not
+                                               Programming     overwriting     binaries. In                               applicable for
+4    arm64-v8a/libmain_hook.so                 (ROP) attacks   return          Full RELRO,                                Dart/Flutter libraries.
+                                               much more       address.        the entire
+                                               difficult to    Use the         GOT (.got
+                                               execute         option -        and .got.plt
+                                               reliably.       fstack-         both) is
+                                                               protector-      marked as
+                                                               all to          read-only.
+                                                               enable
+                                                               stack
+                                                               canaries.
+                                                               Not
+                                                               applicable
+                                                               for
+                                                               Dart/Flutter
+                                                               libraries
+                                                               unless Dart
+                                                               FFI is used.
+                                                          STACK                                                                            SYMBOLS
+NO   SHARED OBJECT          NX            PIE                             RELRO          RPATH       RUNPATH         FORTIFY
+                                                          CANARY                                                                           STRIPPED
+                            True          Dynamic         True            Full RELRO     None        None            True                  True
+                            info          Shared          info            info           info        info            info                  info
+                            The binary    Object (DSO)    This binary     This shared    The         The binary      The binary has the    Symbols are
+                            has NX bit    info            has a stack     object has     binary      does not have   following fortified   stripped.
+                            set. This     The shared      canary          full RELRO     does not    RUNPATH set.    functions:
+                            marks a       object is       value added     enabled.       have run-                   ['__memset_chk',
+                            memory        build with -    to the stack    RELRO          time                        '__strlen_chk',
+                            page non-     fPIC flag       so that it      ensures        search                      '__strlcpy_chk',
+                            executable    which           will be         that the       path or                     '__strlcat_chk']
+                            making        enables         overwritten     GOT            RPATH
+                            attacker      Position        by a stack      cannot be      set.
+                            injected      independent     buffer that     overwritten
+5    arm64-v8a/libSDL2.so   shellcode     code. This      overflows       in
+                            non-          makes Return    the return      vulnerable
+                            executable.   Oriented        address.        ELF
+                                          Programming     This allows     binaries. In
+                                          (ROP) attacks   detection of    Full RELRO,
+                                          much more       overflows       the entire
+                                          difficult to    by verifying    GOT (.got
+                                          execute         the integrity   and .got.plt
+                                          reliably.       of the          both) is
+                                                          canary          marked as
+                                                          before          read-only.
+                                                          function
+                                                          return.
+                                                                      STACK                                                                                SYMBOLS
+NO   SHARED OBJECT                      NX            PIE                             RELRO          RPATH       RUNPATH         FORTIFY
+                                                                      CANARY                                                                               STRIPPED
+                                        True          Dynamic         True            Full RELRO     None        None            False                     True
+                                        info          Shared          info            info           info        info            warning                   info
+                                        The binary    Object (DSO)    This binary     This shared    The         The binary      The binary does not       Symbols are
+                                        has NX bit    info            has a stack     object has     binary      does not have   have any fortified        stripped.
+                                        set. This     The shared      canary          full RELRO     does not    RUNPATH set.    functions. Fortified
+                                        marks a       object is       value added     enabled.       have run-                   functions provides
+                                        memory        build with -    to the stack    RELRO          time                        buffer overflow checks
+                                        page non-     fPIC flag       so that it      ensures        search                      against glibc's
+                                        executable    which           will be         that the       path or                     commons insecure
+                                        making        enables         overwritten     GOT            RPATH                       functions like strcpy,
+                                        attacker      Position        by a stack      cannot be      set.                        gets etc. Use the
+     arm64-                             injected      independent     buffer that     overwritten                                compiler option -
+6    v8a/libandroidx.graphics.path.so   shellcode     code. This      overflows       in                                         D_FORTIFY_SOURCE=2
+                                        non-          makes Return    the return      vulnerable                                 to fortify functions.
+                                        executable.   Oriented        address.        ELF                                        This check is not
+                                                      Programming     This allows     binaries. In                               applicable for
+                                                      (ROP) attacks   detection of    Full RELRO,                                Dart/Flutter libraries.
+                                                      much more       overflows       the entire
+                                                      difficult to    by verifying    GOT (.got
+                                                      execute         the integrity   and .got.plt
+                                                      reliably.       of the          both) is
+                                                                      canary          marked as
+                                                                      before          read-only.
+                                                                      function
+                                                                      return.
+                                                               STACK                                                                            SYMBOLS
+NO   SHARED OBJECT               NX            PIE                             RELRO          RPATH       RUNPATH         FORTIFY
+                                                               CANARY                                                                           STRIPPED
+                                 True          Dynamic         True            Full RELRO     None        None            True                  True
+                                 info          Shared          info            info           info        info            info                  info
+                                 The binary    Object (DSO)    This binary     This shared    The         The binary      The binary has the    Symbols are
+                                 has NX bit    info            has a stack     object has     binary      does not have   following fortified   stripped.
+                                 set. This     The shared      canary          full RELRO     does not    RUNPATH set.    functions:
+                                 marks a       object is       value added     enabled.       have run-                   ['__vsnprintf_chk',
+                                 memory        build with -    to the stack    RELRO          time                        '__read_chk']
+                                 page non-     fPIC flag       so that it      ensures        search
+                                 executable    which           will be         that the       path or
+                                 making        enables         overwritten     GOT            RPATH
+                                 attacker      Position        by a stack      cannot be      set.
+                                 injected      independent     buffer that     overwritten
+7    arm64-v8a/libhook_impl.so   shellcode     code. This      overflows       in
+                                 non-          makes Return    the return      vulnerable
+                                 executable.   Oriented        address.        ELF
+                                               Programming     This allows     binaries. In
+                                               (ROP) attacks   detection of    Full RELRO,
+                                               much more       overflows       the entire
+                                               difficult to    by verifying    GOT (.got
+                                               execute         the integrity   and .got.plt
+                                               reliably.       of the          both) is
+                                                               canary          marked as
+                                                               before          read-only.
+                                                               function
+                                                               return.
+                                                          STACK                                                                            SYMBOLS
+NO   SHARED OBJECT          NX            PIE                             RELRO          RPATH       RUNPATH         FORTIFY
+                                                          CANARY                                                                           STRIPPED
+                            True          Dynamic         True            Full RELRO     None        None            True                  True
+                            info          Shared          info            info           info        info            info                  info
+                            The binary    Object (DSO)    This binary     This shared    The         The binary      The binary has the    Symbols are
+                            has NX bit    info            has a stack     object has     binary      does not have   following fortified   stripped.
+                            set. This     The shared      canary          full RELRO     does not    RUNPATH set.    functions:
+                            marks a       object is       value added     enabled.       have run-                   ['__memcpy_chk',
+                            memory        build with -    to the stack    RELRO          time                        '__memset_chk',
+                            page non-     fPIC flag       so that it      ensures        search                      '__fwrite_chk',
+                            executable    which           will be         that the       path or                     '__fread_chk',
+                            making        enables         overwritten     GOT            RPATH                       '__vsnprintf_chk',
+                            attacker      Position        by a stack      cannot be      set.                        '__write_chk',
+                            injected      independent     buffer that     overwritten                                '__read_chk',
+                            shellcode     code. This      overflows       in                                         '__strlen_chk',
+8    arm64-v8a/libmain.so   non-          makes Return    the return      vulnerable                                 '__pread_chk',
+                            executable.   Oriented        address.        ELF                                        '__pwrite_chk',
+                                          Programming     This allows     binaries. In                               '__strlcpy_chk',
+                                          (ROP) attacks   detection of    Full RELRO,                                '__strncpy_chk',
+                                          much more       overflows       the entire                                 '__vsprintf_chk',
+                                          difficult to    by verifying    GOT (.got                                  '__memmove_chk',
+                                          execute         the integrity   and .got.plt                               '__FD_SET_chk',
+                                          reliably.       of the          both) is                                   '__FD_ISSET_chk',
+                                                          canary          marked as                                  '__recvfrom_chk',
+                                                          before          read-only.                                 '__sendto_chk',
+                                                          function                                                   '__strchr_chk',
+                                                          return.                                                    '__strrchr_chk',
+                                                                                                                     '__strcpy_chk',
+                                                                                                                     '__strcat_chk',
+                                                                                                                     '__strncat_chk']
+                                                               STACK                                                                                SYMBOLS
+NO   SHARED OBJECT               NX            PIE                             RELRO          RPATH       RUNPATH         FORTIFY
+                                                               CANARY                                                                               STRIPPED
+                                 True          Dynamic         False           Full RELRO     None        None            False                     True
+                                 info          Shared          high            info           info        info            warning                   info
+                                 The binary    Object (DSO)    This binary     This shared    The         The binary      The binary does not       Symbols are
+                                 has NX bit    info            does not        object has     binary      does not have   have any fortified        stripped.
+                                 set. This     The shared      have a stack    full RELRO     does not    RUNPATH set.    functions. Fortified
+                                 marks a       object is       canary          enabled.       have run-                   functions provides
+                                 memory        build with -    value added     RELRO          time                        buffer overflow checks
+                                 page non-     fPIC flag       to the stack.   ensures        search                      against glibc's
+                                 executable    which           Stack           that the       path or                     commons insecure
+                                 making        enables         canaries are    GOT            RPATH                       functions like strcpy,
+                                 attacker      Position        used to         cannot be      set.                        gets etc. Use the
+                                 injected      independent     detect and      overwritten                                compiler option -
+                                 shellcode     code. This      prevent         in                                         D_FORTIFY_SOURCE=2
+                                 non-          makes Return    exploits        vulnerable                                 to fortify functions.
+                                 executable.   Oriented        from            ELF                                        This check is not
+                                               Programming     overwriting     binaries. In                               applicable for
+9    arm64-v8a/libmain_hook.so                 (ROP) attacks   return          Full RELRO,                                Dart/Flutter libraries.
+                                               much more       address.        the entire
+                                               difficult to    Use the         GOT (.got
+                                               execute         option -        and .got.plt
+                                               reliably.       fstack-         both) is
+                                                               protector-      marked as
+                                                               all to          read-only.
+                                                               enable
+                                                               stack
+                                                               canaries.
+                                                               Not
+                                                               applicable
+                                                               for
+                                                               Dart/Flutter
+                                                               libraries
+                                                               unless Dart
+                                                               FFI is used.
+                                                              STACK                                                                               SYMBOLS
+NO     SHARED OBJECT          NX              PIE                             RELRO            RPATH       RUNPATH          FORTIFY
+                                                              CANARY                                                                              STRIPPED
+                              True            Dynamic         True            Full RELRO       None        None             True                  True
+                              info            Shared          info            info             info        info             info                  info
+                              The binary      Object (DSO)    This binary     This shared      The         The binary       The binary has the    Symbols are
+                              has NX bit      info            has a stack     object has       binary      does not have    following fortified   stripped.
+                              set. This       The shared      canary          full RELRO       does not    RUNPATH set.     functions:
+                              marks a         object is       value added     enabled.         have run-                    ['__memset_chk',
+                              memory          build with -    to the stack    RELRO            time                         '__strlen_chk',
+                              page non-       fPIC flag       so that it      ensures          search                       '__strlcpy_chk',
+                              executable      which           will be         that the         path or                      '__strlcat_chk']
+                              making          enables         overwritten     GOT              RPATH
+                              attacker        Position        by a stack      cannot be        set.
+                              injected        independent     buffer that     overwritten
+10     arm64-v8a/libSDL2.so   shellcode       code. This      overflows       in
+                              non-            makes Return    the return      vulnerable
+                              executable.     Oriented        address.        ELF
+                                              Programming     This allows     binaries. In
+                                              (ROP) attacks   detection of    Full RELRO,
+                                              much more       overflows       the entire
+                                              difficult to    by verifying    GOT (.got
+                                              execute         the integrity   and .got.plt
+                                              reliably.       of the          both) is
+                                                              canary          marked as
+                                                              before          read-only.
+                                                              function
+                                                              return.
+
+
+
+    NIAP ANALYSIS v1.3
+NO            IDENTIFIER                    REQUIREMENT                                      FEATURE                       DESCRIPTION
+
+
+     BEHAVIOUR ANALYSIS
+RULE ID   BEHAVIOUR                                   LABEL                  FILES
+                                                                             R1/D6.java
+00004     Get filename and put it to JSON object      file collection        R1/I9.java
+                                                                             R1/T0.java
+
+                                                                             A/AbstractC0226a.java
+                                                                             M1/AbstractC0562d.java
+                                                                             M1/C0559a.java
+                                                                             M1/e.java
+                                                                             M1/i.java
+                                                                             R1/AbstractC0908n3.java
+                                                                             R1/AbstractC1004x.java
+00013     Read file and put it into a stream          file                   R1/C0971t6.java
+                                                                             R1/H8.java
+                                                                             R1/I9.java
+                                                                             R1/J2.java
+                                                                             R1/L8.java
+                                                                             R1/S0.java
+                                                                             R1/T0.java
+                                                                             R1/T2.java
+                                                                             d1/m.java
+
+                                                                             R1/E9.java
+00072     Write HTTP input stream into a file         command network file   R1/I9.java
+                                                                             R1/L8.java
+                                                                             h1/l.java
+
+                                                                             R1/AbstractC0797c9.java
+                                                                             R1/E9.java
+00089     Connect to a URL and receive input stream   command network        R1/H9.java
+          from the server                                                    R1/I9.java
+                                                                             R1/L8.java
+                                                                             h1/l.java
+
+                                                                             R1/AbstractC0797c9.java
+00030     Connect to the remote server through the    network                R1/E9.java
+          given URL                                                          R1/H9.java
+                                                                             h1/l.java
+RULE ID   BEHAVIOUR                                     LABEL             FILES
+                                                                          R1/AbstractC0797c9.java
+                                                                          R1/E9.java
+00109     Connect to a URL and get the response         network command   R1/H9.java
+          code                                                            R1/I9.java
+                                                                          R1/L8.java
+                                                                          h1/l.java
+
+                                                                          C0/p.java
+                                                                          F/C0081k.java
+                                                                          R0/h.java
+                                                                          R1/AbstractC1004x.java
+                                                                          R1/C0862i8.java
+                                                                          R1/C0970t5.java
+                                                                          R1/C0975u0.java
+                                                                          R1/C0994w.java
+                                                                          R1/C1000w5.java
+                                                                          R1/D8.java
+                                                                          R1/E3.java
+                                                                          R1/I9.java
+                                                                          R1/N7.java
+00022     Open a file from given absolute path of the   file              R1/P4.java
+          file                                                            R1/Q1.java
+                                                                          R1/R1.java
+                                                                          R1/R4.java
+                                                                          R1/RunnableC0997w2.java
+                                                                          R1/S0.java
+                                                                          R1/S1.java
+                                                                          R1/S3.java
+                                                                          R1/T0.java
+                                                                          R1/U1.java
+                                                                          R1/U4.java
+                                                                          R1/W7.java
+                                                                          R1/y9.java
+                                                                          d/O.java
+                                                                          emu/x360/mobile/X360MobileActivity.java
+
+                                                                          emu/x360/mobile/X360MobileActivity.java
+00063     Implicit intent(view a web page, make a       control           emu/x360/mobile/X360MobileGameActivity.java
+          phone call, etc.)                                               emu/x360/mobile/X360MobileGameLaunchActivity.java
+                                                                          org/libsdl/app/SDLActivity.java
+RULE ID   BEHAVIOUR                                      LABEL                    FILES
+
+00191     Get messages in the SMS inbox                  sms                      emu/x360/mobile/X360MobileContentResolverBridge.java
+                                                                                  emu/x360/mobile/X360MobileGameLaunchActivity.java
+
+          Read file into a stream and put it into a                               R1/C0971t6.java
+00014     JSON object                                    file                     R1/I9.java
+                                                                                  R1/T0.java
+
+00121     Create a directory                             file command             emu/x360/mobile/X360MobileActivity.java
+
+00036     Get resource file from res/raw directory       reflection               emu/x360/mobile/X360MobileActivity.java
+                                                                                  org/libsdl/app/SDLActivity.java
+
+00051     Implicit intent(view a web page, make a        control                  org/libsdl/app/SDLActivity.java
+          phone call, etc.) via setData
+
+00012     Read data and put it into a buffer stream      file                     R1/H8.java
+                                                                                  R1/I9.java
+
+00005     Get absolute path of file and put it to JSON   file                     R1/I9.java
+          object                                                                  R1/T0.java
+
+00015     Put buffer stream (data) to JSON object        file                     R1/I9.java
+
+00096     Connect to a URL and set request method        command network          R1/I9.java
+
+00094     Connect to a URL and read data from it         command network          R1/I9.java
+                                                                                  R1/L8.java
+
+00108     Read the input stream from given URL           network command          R1/I9.java
+                                                                                  R1/L8.java
+
+00189     Get the content of a SMS message               sms                      emu/x360/mobile/X360MobileContentResolverBridge.java
+
+00188     Get the address of a SMS message               sms                      emu/x360/mobile/X360MobileContentResolverBridge.java
+
+00011     Query data from URI (SMS, CALLLOGS)            sms calllog collection   emu/x360/mobile/X360MobileContentResolverBridge.java
+    RULE ID           BEHAVIOUR                                     LABEL                                FILES
+    00200             Query data from the contact list              collection contact                   emu/x360/mobile/X360MobileContentResolverBridge.java
+
+    00187             Query a URI and check the result              collection sms calllog calendar      emu/x360/mobile/X360MobileContentResolverBridge.java
+
+    00201             Query data from the call log                  collection calllog                   emu/x360/mobile/X360MobileContentResolverBridge.java
+
+    00077             Read sensitive data(SMS, CALLLOG, etc)        collection sms calllog calendar      emu/x360/mobile/X360MobileContentResolverBridge.java
+
+
+
+        ABUSED PERMISSIONS
+    TYPE                          MATCHES            PERMISSIONS
+    Malware Permissions           3/25               android.permission.READ_EXTERNAL_STORAGE, android.permission.WRITE_EXTERNAL_STORAGE, android.permission.INTERNET
+
+    Other Common Permissions      0/44
+
+
+Malware Permissions:
+Top permissions that are widely abused by known malware.
+Other Common Permissions:
+Permissions that are commonly abused by known malware.
+
+
+   OFAC SANCTIONED COUNTRIES
+This app may communicate with the following OFAC sanctioned list of countries.
+
+    DOMAIN         COUNTRY/REGION
+
+
+      DOMAIN MALWARE CHECK
+DOMAIN                     STATUS   GEOLOCATION
+                                    IP: 140.82.121.4
+                                    Country: United States of America
+                                    Region: California
+github.com                 ok       City: San Francisco
+                                    Latitude: 37.775700
+                                    Longitude: -122.395203
+                                    View: Google Map
+
+                                    IP: 142.251.27.102
+                                    Country: United States of America
+                                    Region: California
+issuetracker.google.com    ok       City: Mountain View
+                                    Latitude: 37.405991
+                                    Longitude: -122.078514
+                                    View: Google Map
+
+                                    IP: 65.109.25.83
+                                    Country: United States of America
+                                    Region: Massachusetts
+api.thegamesdb.net         ok       City: Andover
+                                    Latitude: 42.648373
+                                    Longitude: -71.161453
+                                    View: Google Map
+
+                                    IP: 142.251.127.82
+                                    Country: United States of America
+                                    Region: California
+android.googlesource.com   ok       City: Mountain View
+                                    Latitude: 37.405991
+                                    Longitude: -122.078514
+                                    View: Google Map
+DOMAIN                      STATUS   GEOLOCATION
+                                     IP: 67.199.248.12
+                                     Country: United States of America
+                                     Region: New York
+goo.gle                     ok       City: New York City
+                                     Latitude: 40.739288
+                                     Longitude: -73.984955
+                                     View: Google Map
+
+                                     IP: 140.82.121.6
+                                     Country: United States of America
+                                     Region: California
+api.github.com              ok       City: San Francisco
+                                     Latitude: 37.775700
+                                     Longitude: -122.395203
+                                     View: Google Map
+
+schemas.android.com         ok       No Geolocation information available.
+
+                                     IP: 64.29.17.67
+                                     Country: Canada
+                                     Region: Ontario
+x360-log-relay.vercel.app   ok       City: Etobicoke
+                                     Latitude: 43.623768
+                                     Longitude: -79.559723
+                                     View: Google Map
+
+                                     IP: 185.199.110.153
+                                     Country: United States of America
+                                     Region: Pennsylvania
+xenia.jp                    ok       City: California
+                                     Latitude: 40.065632
+                                     Longitude: -79.891708
+                                     View: Google Map
+
+
+   EMAILS
+EMAIL                                      FILE
++d@a-.dm                                   apktool_out/lib/arm64-v8a/libmain.so
+
++d@a-.dm                                   lib/arm64-v8a/libmain.so
+
+
+
+   HARDCODED SECRETS
+POSSIBLE SECRETS
+100F6C34-1735-4313-B402-38567131E5F3
+
+5246dd1c14c2fce7a1c85ad77d3aa348ca350fe62337abddf7f2c6f758004626
+
+100F6C32-1735-4313-B402-38567131E5F3
+
+100F6C33-1735-4313-B402-38567131E5F3
+
+
+
+   SCAN LOGS
+Timestamp                              Event                                      Error
+
+2026-05-30 20:33:47                    Generating Hashes                          OK
+
+
+2026-05-30 20:33:47                    Extracting APK                             OK
+
+
+2026-05-30 20:33:47                    Unzipping                                  OK
+2026-05-30 20:33:47   Parsing APK with androguard                                        OK
+
+
+2026-05-30 20:33:48   Extracting APK features using aapt/aapt2                           OK
+
+
+2026-05-30 20:33:49   Getting Hardcoded Certificates/Keystores                           OK
+
+
+2026-05-30 20:33:50   Parsing AndroidManifest.xml                                        OK
+
+
+2026-05-30 20:33:50   Extracting Manifest Data                                           OK
+
+
+2026-05-30 20:33:50   Manifest Analysis Started                                          OK
+
+
+2026-05-30 20:33:50   Performing Static Analysis on: X360 Mobile (emu.x360.mobile)       OK
+
+
+2026-05-30 20:33:52   Fetching Details from Play Store: emu.x360.mobile                  OK
+
+
+2026-05-30 20:33:52   Checking for Malware Permissions                                   OK
+
+
+2026-05-30 20:33:52   Fetching icon path                                                 OK
+
+
+2026-05-30 20:33:52   Library Binary Analysis Started                                    OK
+
+
+2026-05-30 20:33:52   Analyzing apktool_out/lib/arm64-v8a/libandroidx.graphics.path.so   OK
+2026-05-30 20:33:52   Analyzing apktool_out/lib/arm64-v8a/libhook_impl.so    OK
+
+
+2026-05-30 20:33:52   Analyzing apktool_out/lib/arm64-v8a/libmain.so         OK
+
+
+2026-05-30 20:33:52   Analyzing apktool_out/lib/arm64-v8a/libmain_hook.so    OK
+
+
+2026-05-30 20:33:52   Analyzing apktool_out/lib/arm64-v8a/libSDL2.so         OK
+
+
+2026-05-30 20:33:52   Analyzing lib/arm64-v8a/libandroidx.graphics.path.so   OK
+
+
+2026-05-30 20:33:52   Analyzing lib/arm64-v8a/libhook_impl.so                OK
+
+
+2026-05-30 20:33:52   Analyzing lib/arm64-v8a/libmain.so                     OK
+
+
+2026-05-30 20:33:53   Analyzing lib/arm64-v8a/libmain_hook.so                OK
+
+
+2026-05-30 20:33:53   Analyzing lib/arm64-v8a/libSDL2.so                     OK
+
+
+2026-05-30 20:33:53   Reading Code Signing Certificate                       OK
+
+
+2026-05-30 20:33:53   Running APKiD 3.1.0                                    OK
+
+
+2026-05-30 20:33:55   Detecting Trackers                                     OK
+2026-05-30 20:33:56   Decompiling APK to Java with JADX             OK
+
+
+2026-05-30 20:34:02   Converting DEX to Smali                       OK
+
+
+2026-05-30 20:34:02   Code Analysis Started on - java_source        OK
+
+
+2026-05-30 20:34:03   Android SBOM Analysis Completed               OK
+
+
+2026-05-30 20:34:05   Android SAST Completed                        OK
+
+
+2026-05-30 20:34:05   Android API Analysis Started                  OK
+
+
+2026-05-30 20:34:07   Android API Analysis Completed                OK
+
+
+2026-05-30 20:34:07   Android Permission Mapping Started            OK
+
+
+2026-05-30 20:34:08   Android Permission Mapping Completed          OK
+
+
+2026-05-30 20:34:09   Android Behaviour Analysis Started            OK
+
+
+2026-05-30 20:34:11   Android Behaviour Analysis Completed          OK
+
+
+2026-05-30 20:34:11   Extracting Emails and URLs from Source Code   OK
+  2026-05-30 20:34:13                        Email and URL Extraction Completed                                                                                      OK
+
+
+  2026-05-30 20:34:13                        Extracting String data from APK                                                                                         OK
+
+
+  2026-05-30 20:34:13                        Extracting String data from SO                                                                                          OK
+
+
+  2026-05-30 20:34:13                        Extracting String data from Code                                                                                        OK
+
+
+  2026-05-30 20:34:13                        Extracting String values and entropies from Code                                                                        OK
+
+
+  2026-05-30 20:34:14                        Performing Malware check on extracted domains                                                                           OK
+
+
+  2026-05-30 20:34:17                        Saving to Database                                                                                                      OK
+
+
+
+Report Generated by - MobSF v4.4.5
+Mobile Security Framework (MobSF) is an automated, all-in-one mobile application (Android/iOS/Windows) pen-testing, malware analysis and security assessment framework capable of
+performing static and dynamic analysis.
+© 2026 Mobile Security Framework - MobSF | Ajin Abraham | OpenSecurity.
+
