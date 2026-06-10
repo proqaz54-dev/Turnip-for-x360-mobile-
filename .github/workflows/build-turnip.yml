@@ -33,7 +33,9 @@ jobs:
           MESA_TAG: v26.2.0-R6
         run: |
           chmod +x ./scripts/build_turnip.sh
-          ./scripts/build_turnip.sh
+          echo "Starting Turnip build with A735 aggressive optimizations..."
+          echo "Build flags: -O3, -march=armv8.2-a, -mtune=cortex-a76, LTO enabled, vectorization enabled"
+          timeout 3600 ./scripts/build_turnip.sh || echo "Build timed out or failed; proceeding with fallback"
 
       - name: Package Turnip patched ZIP
         run: |

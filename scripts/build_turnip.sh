@@ -37,7 +37,7 @@ else
   fi
 fi
 
-echo "Writing meson cross file..."
+echo "Writing meson cross file with A735 optimization flags..."
 cat > $ROOT/scripts/meson_android_aarch64_cross.txt <<EOF
 [binaries]
 c = '${NDK_HOME}/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android29-clang'
@@ -47,6 +47,10 @@ strip = '${NDK_HOME}/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-strip'
 
 [properties]
 sys_root = '${NDK_HOME}/toolchains/llvm/prebuilt/linux-x86_64/sysroot'
+c_args = ['-O3', '-march=armv8.2-a', '-mtune=cortex-a76', '-fvectorize', '-funroll-loops', '-ffast-math', '-fomit-frame-pointer', '-ffunction-sections', '-fdata-sections']
+c_link_args = ['-O3', '-fomit-frame-pointer', '-Wl,--gc-sections']
+cpp_args = ['-O3', '-march=armv8.2-a', '-mtune=cortex-a76', '-fvectorize', '-funroll-loops', '-ffast-math', '-fomit-frame-pointer', '-ffunction-sections', '-fdata-sections']
+cpp_link_args = ['-O3', '-fomit-frame-pointer', '-Wl,--gc-sections']
 
 [host_machine]
 system = 'android'
@@ -55,9 +59,25 @@ cpu = 'arm64'
 endian = 'little'
 EOF
 
-echo "Configuring meson (freedreno/turnip only)..."
+echo "Configuring meson with A735 aggressive optimizations..."
 meson setup "$BUILD_DIR" --cross-file $ROOT/scripts/meson_android_aarch64_cross.txt \
-  -Dgallium-drivers=freedreno -Dvulkan-drivers=turnip -Dplatforms= -Dbuildtype=release -Dprefix=/usr -Dlibdir=lib64 || true
+  -Dgallium-drivers=freedreno \
+  -Dvulkan-drivers=turnip \
+  -Dplatforms= \
+  -Dbuildtype=release \
+  -Db_ndebug=true \
+  -Db_lto=true \
+  -Dllvm=enabled \
+  -Dshared-llvm=false \
+  -Dprefix=/usr \
+  -Dlibdir=lib64 \
+  -Dglx=disabled \
+  -Degl=enabled \
+  -Dgles1=disabled \
+  -Dgles2=enabled \
+  -Dvalgrind=disabled \
+  -Ddri3=disabled \
+  -Dxvmc=disabled || true
 
 echo "Running ninja to build Turnip..."
 cd "$BUILD_DIR"
