@@ -35,8 +35,28 @@ jobs:
           chmod +x ./scripts/build_turnip.sh
           ./scripts/build_turnip.sh
 
+      - name: Package Turnip patched ZIP
+        run: |
+          mkdir -p build-output
+          ZIP_NAME="Turnip 26.20 R6 patched.zip"
+          echo "Creating $ZIP_NAME with available files..."
+          # include built artifacts if present, otherwise fall back to vendor bundle
+          if compgen -G "build-output/*.so" > /dev/null; then
+            zip -j "build-output/$ZIP_NAME" build-output/*.so || true
+          fi
+          if [ -f vendor/Turnip_v26.2.0-R6/libvulkan_freedreno.so ]; then
+            zip -j "build-output/$ZIP_NAME" vendor/Turnip_v26.2.0-R6/libvulkan_freedreno.so || true
+          fi
+          if [ -f vendor/Turnip.freedreno.icd.json ]; then
+            zip -j "build-output/$ZIP_NAME" vendor/Turnip.freedreno.icd.json || true
+          fi
+          if [ -f vendor/Turnip_v26.2.0-R6/meta.json ]; then
+            zip -j "build-output/$ZIP_NAME" vendor/Turnip_v26.2.0-R6/meta.json || true
+          fi
+          echo "Packaged files:" && ls -l build-output || true
+
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: turnip-artifacts
-          path: build-output/*.so
+          name: turnip-patched-zip
+          path: build-output/*.zip
