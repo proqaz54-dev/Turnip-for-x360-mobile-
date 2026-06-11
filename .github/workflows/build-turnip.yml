@@ -33,8 +33,14 @@ jobs:
           MESA_TAG: v26.2.0-R6
         run: |
           chmod +x ./scripts/build_turnip.sh
-          echo "Starting Turnip build with A735 aggressive optimizations..."
-          echo "Build flags: -O3, -march=armv8.2-a, -mtune=cortex-a76, LTO enabled, vectorization enabled"
+          echo "=== Turnip A735 Ultra-Aggressive Build ==="
+          echo "Compiler: clang (NDK r25)"
+          echo "Optimization: -Ofast"
+          echo "CPU Tuning: cortex-a76 (-march=armv8.2-a+crypto -mcpu=cortex-a76)"
+          echo "Vectorization: -fvectorize -ftree-vectorize -ftree-loop-distribution"
+          echo "FP Optimization: -ffp-contract=fast -fno-math-errno"
+          echo "LTO: thin (-flto=thin)"
+          echo "Starting build (may take 30-45 min with LTO)..."
           timeout 3600 ./scripts/build_turnip.sh || echo "Build timed out or failed; proceeding with fallback"
 
       - name: Package Turnip patched ZIP
