@@ -32,6 +32,15 @@ else
   git checkout main || git checkout master || true
 fi
 
+# Apply Android timeline sync fix (universal for all Adreno GPUs)
+echo "Applying Android timeline sync fix for Adreno..."
+TU_KGSL_FILE=$(find . -name "tu_knl_kgsl.cc" -type f | head -1)
+if [ -n "$TU_KGSL_FILE" ]; then
+  python3 "$ROOT/patches/fix_timeline_sync.py" "$TU_KGSL_FILE" || echo "Timeline sync patch may not be needed for this Mesa version"
+else
+  echo "WARNING: tu_knl_kgsl.cc not found, skipping Android timeline sync fix"
+fi
+
 echo "Writing meson cross file with ultra-aggressive A735 tuning..."
 cat > $ROOT/scripts/meson_android_aarch64_cross.txt <<EOF
 [binaries]
